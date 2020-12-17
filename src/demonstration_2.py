@@ -27,4 +27,22 @@ Explanation: The input array represents the integer 999. 999 + 1 = 1000.
 """
 def plus_one(digits):
     # Your code here
-
+    # have the last index in the array
+    digit_index = len(digits) - 1
+    # loop through the given list from end to start
+    while digit_index >= 0:
+        # increase the last digit by 1
+        digits[digit_index] += 1
+        # if the last digit is less than 10 no need to carry over just return the list
+        if digits[digit_index] < 10:
+            return digits
+        else:
+            digits[digit_index] = 0
+            digit_index -= 1
+    return [1] + digits        
+            
+    
+print(plusOne([9]))
+print(plusOne([1,2,3,4]))
+print(plusOne([9,9,9,9]))
+print(plusOne([0,9,1,2,9]))
