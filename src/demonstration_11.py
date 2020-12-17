@@ -21,16 +21,25 @@ Explanation:
 There is no index that satisfies the conditions in the problem statement.
 """
 def pivot_index(nums):
-    # loop through the each item the array
+    # create left sum and right sum
+    left_sum = 0
+    right_sum = sum(nums[1:])
+    # search through the array and check if the index is pivot index
     for i in range(len(nums)):
-        left_sub_list = nums[0:i]
-        right_sub_list = nums[i+1:]
-        # get the sum of left & right sub array
-        left_sum = sum(left_sub_list)
-        right_sum = sum(right_sub_list)
-        # verify if left sum and right sum are equal
+        # verify if left sum and right sum is equal or not
         if left_sum == right_sum:
+            # then return the pivot index
             return i
+        # now if they are not equal --> keep adding the right-side
+        # number to the left sum
+        left_sum += nums[i]
+        
+        # now subtract the a number next to the current index from the right sum
+        # add conditional case --> there will not (i+1)th when at the last index
+        if ((i+1) == len(nums)):
+            right_sum = 0
+        else:
+            right_sum -= nums[i+1]
     return -1    
 
 print(pivot_index([1,7,3,6,5,6]))
