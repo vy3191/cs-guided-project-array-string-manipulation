@@ -21,5 +21,20 @@ Explanation:
 There is no index that satisfies the conditions in the problem statement.
 """
 def pivot_index(nums):
-    # Your code here
+    # loop through the each item the array
+    for i in range(len(nums)):
+        left_sub_list = nums[0:i]
+        right_sub_list = nums[i+1:]
+        # get the sum of left & right sub array
+        left_sum = sum(left_sub_list)
+        right_sum = sum(right_sub_list)
+        # verify if left sum and right sum are equal
+        if left_sum == right_sum:
+            return i
+    return -1    
+
+print(pivot_index([1,7,3,6,5,6]))
+print(pivot_index([1,2,3]))
+        
+    
 
